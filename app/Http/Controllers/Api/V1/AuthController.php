@@ -122,12 +122,61 @@ class AuthController extends Controller
 
     private function setTokenAndRefreshTokenCookie($token, $refreshToken)
     {
+        // $cookie = Cookie::make(
+        //     'access_token',
+        //     $token,
+        //     config('jwt.refresh_ttl'), // 1 day
+        //     '/',
+        //     '103.155.161.244',
+        //     false,
+        //     true,
+        //     false,
+        //     'Lax'
+        // );
+
+        // $refreshCookie = Cookie::make(
+        //     'refresh_token',
+        //     $refreshToken,
+        //     config('jwt.refresh_ttl'), // 2 weeks
+        //     '/',
+        //     '103.155.161.244',
+        //     false,
+        //     true,
+        //     false,
+        //     'Lax'
+        // );
+
+
+        // $cookie = Cookie::make(
+        //     'access_token',
+        //     $token,
+        //     config('jwt.refresh_ttl'), // 1 day
+        //     '/',
+        //     null,
+        //     true,
+        //     true,
+        //     false,
+        //     'None'
+        // );
+
+        // $refreshCookie = Cookie::make(
+        //     'refresh_token',
+        //     $refreshToken,
+        //     config('jwt.refresh_ttl'), // 2 weeks
+        //     '/',
+        //     null,
+        //     true,
+        //     true,
+        //     false,
+        //     'None'
+        // );
+
         $cookie = Cookie::make(
             'access_token',
             $token,
             config('jwt.refresh_ttl'), // 1 day
             '/',
-            '103.155.161.244',
+            'pham-huynh.io.vn',
             false,
             true,
             false,
@@ -139,12 +188,13 @@ class AuthController extends Controller
             $refreshToken,
             config('jwt.refresh_ttl'), // 2 weeks
             '/',
-            '103.155.161.244',
+            'pham-huynh.io.vn',
             false,
             true,
             false,
             'Lax'
         );
+
 
         return [
             'tokenCookie' => $cookie,
