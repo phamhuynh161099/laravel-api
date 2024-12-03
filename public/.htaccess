@@ -20,10 +20,9 @@
     RewriteRule ^ index.php [L]
 </IfModule>
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "http://10.20.13.50:5173"
+    Header set Access-Control-Allow-Origin "http://103.155.161.244"
     Header set Access-Control-Allow-Credentials "true"
     Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
     Header set Access-Control-Allow-Headers "Content-Type, Authorization"
-    Header set Access-Control-Allow-Credentials true
 </IfModule>
 
