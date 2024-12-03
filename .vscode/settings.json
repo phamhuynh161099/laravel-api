@@ -1,0 +1,6 @@
+{
+    "intelephense.environment.includePaths": [
+        "./vendor"
+    ],
+    "php.version": "7.4"
+}
