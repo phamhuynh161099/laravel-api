@@ -128,7 +128,7 @@ class AuthController extends Controller
             config('jwt.refresh_ttl'), // 1 day
             '/',
             null,
-            true,
+            false,
             true,
             false,
             'None'
@@ -140,7 +140,7 @@ class AuthController extends Controller
             config('jwt.refresh_ttl'), // 2 weeks
             '/',
             null,
-            true,
+            false,
             true,
             false,
             'None'
