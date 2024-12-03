@@ -128,10 +128,10 @@ class AuthController extends Controller
             config('jwt.refresh_ttl'), // 1 day
             '/',
             null,
-            false,
+            true,
             true,
             false,
-            'Lax'
+            'None'
         );
 
         $refreshCookie = Cookie::make(
@@ -140,10 +140,10 @@ class AuthController extends Controller
             config('jwt.refresh_ttl'), // 2 weeks
             '/',
             null,
-            false,
+            true,
             true,
             false,
-            'Lax'
+            'None'
         );
 
         return [

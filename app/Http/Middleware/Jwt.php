@@ -21,11 +21,15 @@ class Jwt
     public function handle(Request $request, Closure $next): Response
     {
         try {
+
+            // dd(123);
             if($request->hasCookie('access_token')){
                 $token = $request->cookie('access_token');
                 $request->headers->set('Authorization', 'Bearer ' . $token);
             }
             $user = JWTAuth::parseToken()->authenticate();
+
+
         } catch (TokenExpiredException $e) {
 
             return response()->json(['message' => 'Token đã hết hạn'], Response::HTTP_UNAUTHORIZED);
