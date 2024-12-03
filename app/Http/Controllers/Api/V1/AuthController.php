@@ -131,7 +131,7 @@ class AuthController extends Controller
             true,
             true,
             false,
-            'None'
+            'Lax'
         );
 
         $refreshCookie = Cookie::make(
@@ -143,7 +143,7 @@ class AuthController extends Controller
             true,
             true,
             false,
-            'None'
+            'Lax'
         );
 
         return [
