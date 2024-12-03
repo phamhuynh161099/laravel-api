@@ -127,7 +127,7 @@ class AuthController extends Controller
             $token,
             config('jwt.refresh_ttl'), // 1 day
             '/',
-            null,
+            '103.155.161.244',
             false,
             true,
             false,
@@ -139,7 +139,7 @@ class AuthController extends Controller
             $refreshToken,
             config('jwt.refresh_ttl'), // 2 weeks
             '/',
-            null,
+            '103.155.161.244',
             false,
             true,
             false,
