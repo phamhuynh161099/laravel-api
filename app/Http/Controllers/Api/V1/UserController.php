@@ -38,8 +38,9 @@ class UserController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function create(StoreUserRequest $request)
+    public function create(Request $request)
     {
+
 
         $auth = auth()->user();
         $data = $this->userService->create($request, $auth);

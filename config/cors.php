@@ -34,6 +34,7 @@ return [
     // 'max_age' => 0,
     // 'supports_credentials' => true,
 
+    //SERVER
     'paths' => ['api/*'],
     'allowed_methods' => ['*'],
     'allowed_origins' => ['http://pham-huynh.io.vn'],

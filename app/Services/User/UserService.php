@@ -6,6 +6,7 @@ use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use App\Enums\Status;
 use App\Models\User;
+use Hash;
 
 class UserService extends BaseService
 {
@@ -49,9 +50,7 @@ class UserService extends BaseService
     {
         DB::beginTransaction();
         try {
-            $except = ['confirmPassword'];
-            $payload = $this->_request($request, $auth, $except);
-
+            $payload = $this->createPayload($request, $auth);
             $user = $this->model->create($payload);
             DB::commit();
 
@@ -107,5 +106,15 @@ class UserService extends BaseService
                 'message' => $e->getMessage()
             ];
         }
+    }
+
+
+    public function createPayload($request, $auth) {
+        return [
+            'name'=> $request->input('name'),
+            'email'=>$request->input('email'),
+            'password'=>Hash::make($request->input('password')),
+            'created_by'=>auth()->user()->name,
+        ];
     }
 }

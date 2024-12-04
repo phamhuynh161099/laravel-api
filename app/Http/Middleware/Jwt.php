@@ -21,14 +21,11 @@ class Jwt
     public function handle(Request $request, Closure $next): Response
     {
         try {
-
-            // dd(123);
             if($request->hasCookie('access_token')){
                 $token = $request->cookie('access_token');
                 $request->headers->set('Authorization', 'Bearer ' . $token);
             }
             $user = JWTAuth::parseToken()->authenticate();
-
 
         } catch (TokenExpiredException $e) {
 
@@ -38,7 +35,6 @@ class Jwt
         } catch (\Exception $e) {
             return response()->json(['message' => 'Không có Token'], Response::HTTP_BAD_REQUEST);
         }
-
         return $next($request);
     }
 }
