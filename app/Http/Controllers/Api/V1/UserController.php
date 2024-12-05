@@ -56,6 +56,22 @@ class UserController extends Controller
         ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
+    public function update($id,Request $request)
+    {
+        $auth = auth()->user();
+        $data = $this->userService->update($request,$id , $auth);
+        if ($data['code'] == 'SUCCESS') {
+            return response()->json([
+                'message' => 'Chỉnh sửa bản ghi thành công',
+                'user' => new UserResource($data['user'])
+            ], Response::HTTP_OK);
+        }
+
+        return response()->json([
+            'message' => $data['message']
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
     private function baseUpdate($request, $id)
     {
         $auth = auth()->user();

@@ -95,8 +95,12 @@ class FileUploader{
         return  Str::uuid(). '.' .  $file->clientExtension();
     }
 
+
+    // thiếu 1 vài module, sẽ cập nhật sau
     protected function createThumbnails(array $folderStructure, string $filename): void{
         $originalPath = storage_path('app/' . $folderStructure['image'] . '/' . $filename);
+
+        dd($this->imageManager);
         $image = $this->imageManager->make($originalPath);
 
         $imageWidth = $image->width();

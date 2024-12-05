@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Classes\FileUploader;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use App\Enums\Status;
@@ -72,13 +73,14 @@ class UserService extends BaseService
     {
         DB::beginTransaction();
         try {
-            $except = ['confirmPassword'];
-            $payload = $this->_request($request, $auth, $except);
+            $payload = $this->updatePayload($request, $auth);
+            // dd($this->model->find($id));
 
-            $user = $this->model->update($id, $payload);
+            $user = $this->model->find($id)->update($payload);
+
             DB::commit();
             return [
-                'user' => $user,
+                'user' => $this->model->find($id),
                 'code' => 'SUCCESS'
             ];
         } catch (\Exception $e) {
@@ -110,11 +112,52 @@ class UserService extends BaseService
 
 
     public function createPayload($request, $auth) {
-        return [
+
+        $payload = [
             'name'=> $request->input('name'),
             'email'=>$request->input('email'),
             'password'=>Hash::make($request->input('password')),
             'created_by'=>auth()->user()->name,
         ];
+
+        if($request->file('images')){
+            $arrFileImage = $request->file('images');
+            $this->fileUploader = new FileUploader($auth->email);
+            for ($i=0; $i < count($arrFileImage); $i++) {
+                $image = $arrFileImage[$i];
+                $payload['image'] = $this->fileUploader->uploadFile($image, 'image', ['avatar']);
+            }
+        }else{
+            $payload['image'] = null;
+        }
+
+        return $payload;
+    }
+
+
+    public function updatePayload($request, $auth) {
+
+        $payload = [
+            'name'=> $request->input('name'),
+            'email'=>$request->input('email'),
+            'updated_by'=>auth()->user()->name,
+        ];
+
+        if ($request->input('password')) {
+            $payload['password'] = Hash::make($request->input('password'));
+        }
+
+        if($request->file('images')){
+            $arrFileImage = $request->file('images');
+            $this->fileUploader = new FileUploader($auth->email);
+            for ($i=0; $i < count($arrFileImage); $i++) {
+                $image = $arrFileImage[$i];
+                $payload['image'] = $this->fileUploader->uploadFile($image, 'image', ['avatar']);
+            }
+        }else{
+            // do nothing
+        }
+
+        return $payload;
     }
 }
