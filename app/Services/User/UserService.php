@@ -160,4 +160,8 @@ class UserService extends BaseService
 
         return $payload;
     }
+
+    // public function handleImageLinkWithDomain($path) {
+    //     Request::getHost();
+    // }
 }

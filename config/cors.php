@@ -15,34 +15,25 @@ return [
     |
     */
 
-    // 'paths' => ['api/*', 'sanctum/csrf-cookie'],
-    // 'allowed_methods' => ['*'],
-    // 'allowed_origins' => ['*'],
-    // 'allowed_origins_patterns' => [],
-    // 'allowed_headers' => ['*'],
-    // 'exposed_headers' => [],
-    // 'max_age' => 0,
-    // 'supports_credentials' => true,
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'allowed_methods' => ['*'],
+    'allowed_origins' => ['*'],
+    'allowed_origins_patterns' => [],
+    'allowed_headers' => ['*'],
+    'exposed_headers' => [],
+    'max_age' => 0,
+    'supports_credentials' => true,
 
 
+    //SERVER
     // 'paths' => ['api/*'],
     // 'allowed_methods' => ['*'],
-    // 'allowed_origins' => ['https://103.155.161.244:5173'],
+    // 'allowed_origins' => ['https://pham-huynh.io.vn'],
     // 'allowed_origins_patterns' => [],
     // 'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization'],
     // 'exposed_headers' => ['Set-Cookie'],
     // 'max_age' => 0,
     // 'supports_credentials' => true,
-
-    //SERVER
-    'paths' => ['api/*'],
-    'allowed_methods' => ['*'],
-    'allowed_origins' => ['https://pham-huynh.io.vn'],
-    'allowed_origins_patterns' => [],
-    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization'],
-    'exposed_headers' => ['Set-Cookie'],
-    'max_age' => 0,
-    'supports_credentials' => true,
 
 
 ];
